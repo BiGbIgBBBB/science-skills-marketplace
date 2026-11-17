@@ -1,0 +1,58 @@
+{
+  "name": "jfang-science-skills",
+  "owner": {
+    "name": "Jingchao Fang",
+    "url": "https://github.com/BiGbIgBBBB"
+  },
+  "metadata": {
+    "description": "Curated scientific research skills for photonics / OCT / quantum research, auto-synced daily from K-Dense-AI/scientific-agent-skills and Yuan1z0825/nature-skills."
+  },
+  "plugins": [
+    {
+      "name": "sci-computing",
+      "source": "./plugins/sci-computing",
+      "description": "Scientific computing, numerical modeling, data analysis, plotting and quantum-simulation skills (Matplotlib, SymPy, QuTiP, Qiskit, MATLAB, GPU, statistics, ML, optimization).",
+      "version": "1.20261117.2154",
+      "category": "science",
+      "keywords": [
+        "physics",
+        "photonics",
+        "simulation",
+        "visualization",
+        "data-analysis",
+        "quantum"
+      ]
+    },
+    {
+      "name": "sci-research-writing",
+      "source": "./plugins/sci-research-writing",
+      "description": "Literature search, scientific writing, peer review, grants, posters, slides and research ideation skills.",
+      "version": "1.20261117.2154",
+      "category": "science",
+      "keywords": [
+        "writing",
+        "literature",
+        "citations",
+        "grants",
+        "posters",
+        "slides",
+        "peer-review"
+      ]
+    },
+    {
+      "name": "nature-skills",
+      "source": "./plugins/nature-skills",
+      "description": "Nature-style manuscript workflow: writing, polishing, figures, statistics, citations, reviewer simulation, rebuttal, paper reading/translation, slides and patents.",
+      "version": "1.20261117.2154",
+      "category": "science",
+      "keywords": [
+        "nature",
+        "manuscript",
+        "figures",
+        "rebuttal",
+        "polishing",
+        "translation"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "marketplace": {
+    "name": "jfang-science-skills",
+    "owner": { "name": "Jingchao Fang", "url": "https://github.com/BiGbIgBBBB" },
+    "description": "Curated scientific research skills for photonics / OCT / quantum research, auto-synced daily from K-Dense-AI/scientific-agent-skills and Yuan1z0825/nature-skills."
+  },
+  "upstreams": {
+    "kdense": { "repo": "https://github.com/K-Dense-AI/scientific-agent-skills.git", "branch": "main", "skills_dir": "skills", "license_file": "LICENSE.md", "license": "MIT" },
+    "nature": { "repo": "https://github.com/Yuan1z0825/nature-skills.git", "branch": "main", "skills_dir": "skills", "license_file": "LICENSE", "license": "Apache-2.0" }
+  },
+  "plugins": [
+    {
+      "name": "sci-computing",
+      "upstream": "kdense",
+      "description": "Scientific computing, numerical modeling, data analysis, plotting and quantum-simulation skills (Matplotlib, SymPy, QuTiP, Qiskit, MATLAB, GPU, statistics, ML, optimization).",
+      "keywords": ["physics", "photonics", "simulation", "visualization", "data-analysis", "quantum"],
+      "skills": [
+        "matplotlib", "scientific-visualization", "seaborn", "sympy", "matlab",
+        "uncertainty-and-units", "optimize-for-gpu", "get-available-resources",
+        "qutip", "qiskit", "pennylane",
+        "exploratory-data-analysis", "statistical-analysis", "statistical-power", "statsmodels",
+        "scikit-learn", "pytorch-lightning", "pymoo", "pymc", "dask", "polars", "zarr-python",
+        "experimental-design", "lab-hardware-cad", "markitdown", "liteparse"
+      ]
+    },
+    {
+      "name": "sci-research-writing",
+      "upstream": "kdense",
+      "description": "Literature search, scientific writing, peer review, grants, posters, slides and research ideation skills.",
+      "keywords": ["writing", "literature", "citations", "grants", "posters", "slides", "peer-review"],
+      "skills": [
+        "scientific-writing", "literature-review", "citation-management", "paper-lookup", "research-lookup",
+        "pyzotero", "peer-review", "scholar-evaluation", "research-grants", "venue-templates",
+        "latex-posters", "pptx-posters", "scientific-slides", "scientific-schematics",
+        "markdown-mermaid-writing", "hypothesis-generation", "scientific-brainstorming",
+        "scientific-critical-thinking"
+      ]
+    },
+    {
+      "name": "nature-skills",
+      "upstream": "nature",
+      "description": "Nature-style manuscript workflow: writing, polishing, figures, statistics, citations, reviewer simulation, rebuttal, paper reading/translation, slides and patents.",
+      "keywords": ["nature", "manuscript", "figures", "rebuttal", "polishing", "translation"],
+      "skills": [
+        "nature-shared",
+        "nature-writing", "nature-polishing", "nature-figure", "nature-statistics", "nature-data",
+        "nature-citation", "nature-ref-verifier", "nature-academic-search", "nature-literature-pipeline",
+        "nature-reviewer", "nature-response", "nature-paper-xray", "nature-paper-card", "nature-reader",
+        "nature-paper-trans", "nature-paper2ppt", "nature-image2ppt", "nature-paper2word",
+        "nature-proposal-writer", "nature-paper-to-patent", "nature-experiment-log"
+      ]
+    }
+  ]
+}

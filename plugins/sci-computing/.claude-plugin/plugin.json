@@ -1,0 +1,19 @@
+{
+  "name": "sci-computing",
+  "version": "1.20261117.2154",
+  "description": "Scientific computing, numerical modeling, data analysis, plotting and quantum-simulation skills (Matplotlib, SymPy, QuTiP, Qiskit, MATLAB, GPU, statistics, ML, optimization).",
+  "author": {
+    "name": "Jingchao Fang",
+    "url": "https://github.com/BiGbIgBBBB"
+  },
+  "homepage": "https://github.com/K-Dense-AI/scientific-agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "physics",
+    "photonics",
+    "simulation",
+    "visualization",
+    "data-analysis",
+    "quantum"
+  ]
+}

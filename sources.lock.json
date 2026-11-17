@@ -1,0 +1,93 @@
+{
+  "upstreams": {
+    "kdense": {
+      "repo": "https://github.com/K-Dense-AI/scientific-agent-skills.git",
+      "commit": "ec59a29a03d5c40f73ab40878df04860bc00e876"
+    },
+    "nature": {
+      "repo": "https://github.com/Yuan1z0825/nature-skills.git",
+      "commit": "14ca69710cae192325395a380e9cdd4ae5d9d0c8"
+    }
+  },
+  "sci-computing": {
+    "version": "1.20261117.2154",
+    "skills": [
+      "matplotlib",
+      "scientific-visualization",
+      "seaborn",
+      "sympy",
+      "matlab",
+      "uncertainty-and-units",
+      "optimize-for-gpu",
+      "get-available-resources",
+      "qutip",
+      "qiskit",
+      "pennylane",
+      "exploratory-data-analysis",
+      "statistical-analysis",
+      "statistical-power",
+      "statsmodels",
+      "scikit-learn",
+      "pytorch-lightning",
+      "pymoo",
+      "pymc",
+      "dask",
+      "polars",
+      "zarr-python",
+      "experimental-design",
+      "lab-hardware-cad",
+      "markitdown",
+      "liteparse"
+    ]
+  },
+  "sci-research-writing": {
+    "version": "1.20261117.2154",
+    "skills": [
+      "scientific-writing",
+      "literature-review",
+      "citation-management",
+      "paper-lookup",
+      "research-lookup",
+      "pyzotero",
+      "peer-review",
+      "scholar-evaluation",
+      "research-grants",
+      "venue-templates",
+      "latex-posters",
+      "pptx-posters",
+      "scientific-slides",
+      "scientific-schematics",
+      "markdown-mermaid-writing",
+      "hypothesis-generation",
+      "scientific-brainstorming",
+      "scientific-critical-thinking"
+    ]
+  },
+  "nature-skills": {
+    "version": "1.20261117.2154",
+    "skills": [
+      "nature-shared",
+      "nature-writing",
+      "nature-polishing",
+      "nature-figure",
+      "nature-statistics",
+      "nature-data",
+      "nature-citation",
+      "nature-ref-verifier",
+      "nature-academic-search",
+      "nature-literature-pipeline",
+      "nature-reviewer",
+      "nature-response",
+      "nature-paper-xray",
+      "nature-paper-card",
+      "nature-reader",
+      "nature-paper-trans",
+      "nature-paper2ppt",
+      "nature-image2ppt",
+      "nature-paper2word",
+      "nature-proposal-writer",
+      "nature-paper-to-patent",
+      "nature-experiment-log"
+    ]
+  }
+}

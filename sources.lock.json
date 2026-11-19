@@ -6,7 +6,7 @@
     },
     "nature": {
       "repo": "https://github.com/Yuan1z0825/nature-skills.git",
-      "commit": "14ca69710cae192325395a380e9cdd4ae5d9d0c8"
+      "commit": "9bd1d0823f564752f0dcc701f9bd3a0001fffdc5"
     }
   },
   "sci-computing": {
@@ -64,7 +64,7 @@
     ]
   },
   "nature-skills": {
-    "version": "1.20261117.2154",
+    "version": "1.20261119.1638",
     "skills": [
       "nature-shared",
       "nature-writing",

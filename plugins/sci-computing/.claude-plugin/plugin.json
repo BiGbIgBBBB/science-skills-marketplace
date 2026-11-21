@@ -1,7 +1,7 @@
 {
   "name": "sci-computing",
-  "version": "1.20261117.2154",
-  "description": "Scientific computing, numerical modeling, data analysis, plotting and quantum-simulation skills (Matplotlib, SymPy, QuTiP, Qiskit, MATLAB, GPU, statistics, ML, optimization).",
+  "version": "1.20261121.2102",
+  "description": "Python scientific computing for photonics research: Matplotlib and publication figures, SymPy, units and uncertainty, quantum simulation (QuTiP, Qiskit, PennyLane), statistics, ML (scikit-learn, Lightning), multi-objective optimization, GPU acceleration, lab-hardware CAD.",
   "author": {
     "name": "Jingchao Fang",
     "url": "https://github.com/BiGbIgBBBB"
@@ -13,7 +13,7 @@
     "photonics",
     "simulation",
     "visualization",
-    "data-analysis",
-    "quantum"
+    "quantum",
+    "optimization"
   ]
 }

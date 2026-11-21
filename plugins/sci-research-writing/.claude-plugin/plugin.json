@@ -1,7 +1,7 @@
 {
   "name": "sci-research-writing",
-  "version": "1.20261117.2154",
-  "description": "Literature search, scientific writing, peer review, grants, posters, slides and research ideation skills.",
+  "version": "1.20261121.2102",
+  "description": "Literature search and review, BibTeX citation management, Zotero, grant proposals, LaTeX venue templates and posters, research talks and ideation.",
   "author": {
     "name": "Jingchao Fang",
     "url": "https://github.com/BiGbIgBBBB"
@@ -9,12 +9,12 @@
   "homepage": "https://github.com/K-Dense-AI/scientific-agent-skills",
   "license": "MIT",
   "keywords": [
-    "writing",
     "literature",
     "citations",
+    "bibtex",
     "grants",
     "posters",
     "slides",
-    "peer-review"
+    "latex"
   ]
 }

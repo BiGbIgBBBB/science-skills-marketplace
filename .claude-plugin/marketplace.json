@@ -5,53 +5,83 @@
     "url": "https://github.com/BiGbIgBBBB"
   },
   "metadata": {
-    "description": "Curated scientific research skills for photonics / OCT / quantum research, auto-synced daily from K-Dense-AI/scientific-agent-skills and Yuan1z0825/nature-skills."
+    "description": "Skills for integrated-photonics (TFLN) and OCT research: figures, manuscript writing, literature and scientific computing. A hand-written photonics plugin plus a curated subset auto-synced daily from K-Dense-AI/scientific-agent-skills, Yuan1z0825/nature-skills and AIScientists-Dev/academic-humanizer."
   },
   "plugins": [
     {
+      "name": "photonics-oct",
+      "source": "./plugins/photonics-oct",
+      "description": "Personal defaults for integrated-photonics / OCT work: matplotlib figure style and plot recipes for Optica, Nature and Science journals, and a LaTeX manuscript guide with photonics terminology. Start here for any figure or paper task.",
+      "version": "1.20261121.2149",
+      "category": "science",
+      "keywords": [
+        "photonics",
+        "oct",
+        "tfln",
+        "matplotlib",
+        "figures",
+        "latex",
+        "optica"
+      ]
+    },
+    {
       "name": "sci-computing",
       "source": "./plugins/sci-computing",
-      "description": "Scientific computing, numerical modeling, data analysis, plotting and quantum-simulation skills (Matplotlib, SymPy, QuTiP, Qiskit, MATLAB, GPU, statistics, ML, optimization).",
-      "version": "1.20261117.2154",
+      "description": "Python scientific computing for photonics research: Matplotlib and publication figures, SymPy, units and uncertainty, quantum simulation (QuTiP, Qiskit, PennyLane), statistics, ML (scikit-learn, Lightning), multi-objective optimization, GPU acceleration, lab-hardware CAD.",
+      "version": "1.20261121.2102",
       "category": "science",
       "keywords": [
         "physics",
         "photonics",
         "simulation",
         "visualization",
-        "data-analysis",
-        "quantum"
+        "quantum",
+        "optimization"
       ]
     },
     {
       "name": "sci-research-writing",
       "source": "./plugins/sci-research-writing",
-      "description": "Literature search, scientific writing, peer review, grants, posters, slides and research ideation skills.",
-      "version": "1.20261117.2154",
+      "description": "Literature search and review, BibTeX citation management, Zotero, grant proposals, LaTeX venue templates and posters, research talks and ideation.",
+      "version": "1.20261121.2102",
       "category": "science",
       "keywords": [
-        "writing",
         "literature",
         "citations",
+        "bibtex",
         "grants",
         "posters",
         "slides",
-        "peer-review"
+        "latex"
       ]
     },
     {
       "name": "nature-skills",
       "source": "./plugins/nature-skills",
-      "description": "Nature-style manuscript workflow: writing, polishing, figures, statistics, citations, reviewer simulation, rebuttal, paper reading/translation, slides and patents.",
-      "version": "1.20261119.1638",
+      "description": "Manuscript workflow: drafting, polishing and zh-to-en translation, figure QA, reference verification, mock review, response to reviewers, data-availability statements and deep paper reading.",
+      "version": "1.20261121.2102",
       "category": "science",
       "keywords": [
-        "nature",
         "manuscript",
         "figures",
-        "rebuttal",
         "polishing",
+        "rebuttal",
+        "peer-review",
         "translation"
+      ]
+    },
+    {
+      "name": "academic-humanizer",
+      "source": "./plugins/academic-humanizer",
+      "description": "Remove AI tells from AI-assisted academic prose and grant proposals (NSF, NIH) while keeping scholarly voice and every number, claim and citation intact.",
+      "version": "1.20261121.2146",
+      "category": "science",
+      "keywords": [
+        "writing",
+        "editing",
+        "humanizer",
+        "manuscript",
+        "grants"
       ]
     }
   ]

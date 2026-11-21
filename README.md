@@ -63,9 +63,10 @@ name. Updates to plugins you already have arrive on their own.
 
 ### How updates reach Claude
 
-1. Every day at 07:17 UTC (and on pushes to `main` that touch `sources.json`, `scripts/sync.py`
-   or `plugins/photonics-oct/`) the **Sync upstream skills** workflow fetches the upstreams and
-   rebuilds the synced plugins.
+1. Once a day (scheduled for 07:17 UTC; GitHub often starts scheduled jobs hours late), and on
+   pushes to `main` that touch `sources.json`, `scripts/sync.py` or `plugins/photonics-oct/`,
+   the **Sync upstream skills** workflow fetches the upstreams and rebuilds the synced plugins.
+   It can also be started by hand from the Actions tab.
 2. A plugin whose content changed gets a new `version`, written identically to its
    `plugin.json` and to `marketplace.json`. Claude Code installs a new copy only when that
    version string changes, so an unchanged plugin is never re-downloaded.

@@ -1,54 +1,171 @@
 {
   "marketplace": {
     "name": "jfang-science-skills",
-    "owner": { "name": "Jingchao Fang", "url": "https://github.com/BiGbIgBBBB" },
-    "description": "Curated scientific research skills for photonics / OCT / quantum research, auto-synced daily from K-Dense-AI/scientific-agent-skills and Yuan1z0825/nature-skills."
+    "owner": {
+      "name": "Jingchao Fang",
+      "url": "https://github.com/BiGbIgBBBB"
+    },
+    "description": "Curated scientific research skills for photonics / OCT / quantum research, auto-synced daily from K-Dense-AI/scientific-agent-skills, Yuan1z0825/nature-skills and AIScientists-Dev/academic-humanizer, plus Imbad0202/academic-research-skills referenced as an external plugin."
   },
   "upstreams": {
-    "kdense": { "repo": "https://github.com/K-Dense-AI/scientific-agent-skills.git", "branch": "main", "skills_dir": "skills", "license_file": "LICENSE.md", "license": "MIT" },
-    "nature": { "repo": "https://github.com/Yuan1z0825/nature-skills.git", "branch": "main", "skills_dir": "skills", "license_file": "LICENSE", "license": "Apache-2.0" }
+    "kdense": {
+      "repo": "https://github.com/K-Dense-AI/scientific-agent-skills.git",
+      "branch": "main",
+      "skills_dir": "skills",
+      "license_file": "LICENSE.md",
+      "license": "MIT"
+    },
+    "nature": {
+      "repo": "https://github.com/Yuan1z0825/nature-skills.git",
+      "branch": "main",
+      "skills_dir": "skills",
+      "license_file": "LICENSE",
+      "license": "Apache-2.0"
+    },
+    "humanizer": {
+      "repo": "https://github.com/AIScientists-Dev/academic-humanizer.git",
+      "branch": "main",
+      "layout": "root-skill",
+      "license_file": "LICENSE",
+      "license": "MIT"
+    }
   },
   "plugins": [
     {
       "name": "sci-computing",
       "upstream": "kdense",
       "description": "Scientific computing, numerical modeling, data analysis, plotting and quantum-simulation skills (Matplotlib, SymPy, QuTiP, Qiskit, MATLAB, GPU, statistics, ML, optimization).",
-      "keywords": ["physics", "photonics", "simulation", "visualization", "data-analysis", "quantum"],
+      "keywords": [
+        "physics",
+        "photonics",
+        "simulation",
+        "visualization",
+        "data-analysis",
+        "quantum"
+      ],
       "skills": [
-        "matplotlib", "scientific-visualization", "seaborn", "sympy", "matlab",
-        "uncertainty-and-units", "optimize-for-gpu", "get-available-resources",
-        "qutip", "qiskit", "pennylane",
-        "exploratory-data-analysis", "statistical-analysis", "statistical-power", "statsmodels",
-        "scikit-learn", "pytorch-lightning", "pymoo", "pymc", "dask", "polars", "zarr-python",
-        "experimental-design", "lab-hardware-cad", "markitdown", "liteparse"
+        "matplotlib",
+        "scientific-visualization",
+        "seaborn",
+        "sympy",
+        "matlab",
+        "uncertainty-and-units",
+        "optimize-for-gpu",
+        "get-available-resources",
+        "qutip",
+        "qiskit",
+        "pennylane",
+        "exploratory-data-analysis",
+        "statistical-analysis",
+        "statistical-power",
+        "statsmodels",
+        "scikit-learn",
+        "pytorch-lightning",
+        "pymoo",
+        "pymc",
+        "dask",
+        "polars",
+        "zarr-python",
+        "experimental-design",
+        "lab-hardware-cad",
+        "markitdown",
+        "liteparse"
       ]
     },
     {
       "name": "sci-research-writing",
       "upstream": "kdense",
       "description": "Literature search, scientific writing, peer review, grants, posters, slides and research ideation skills.",
-      "keywords": ["writing", "literature", "citations", "grants", "posters", "slides", "peer-review"],
+      "keywords": [
+        "writing",
+        "literature",
+        "citations",
+        "grants",
+        "posters",
+        "slides",
+        "peer-review"
+      ],
       "skills": [
-        "scientific-writing", "literature-review", "citation-management", "paper-lookup", "research-lookup",
-        "pyzotero", "peer-review", "scholar-evaluation", "research-grants", "venue-templates",
-        "latex-posters", "pptx-posters", "scientific-slides", "scientific-schematics",
-        "markdown-mermaid-writing", "hypothesis-generation", "scientific-brainstorming",
-        "scientific-critical-thinking"
+        "scientific-writing",
+        "literature-review",
+        "citation-management",
+        "paper-lookup",
+        "research-lookup",
+        "pyzotero",
+        "peer-review",
+        "scholar-evaluation",
+        "research-grants",
+        "venue-templates",
+        "latex-posters",
+        "pptx-posters",
+        "scientific-slides",
+        "scientific-schematics",
+        "markdown-mermaid-writing",
+        "hypothesis-generation",
+        "scientific-brainstorming",
+        "scientific-critical-thinking",
+        {
+          "name": "academic-humanizer",
+          "upstream": "humanizer"
+        }
       ]
     },
     {
       "name": "nature-skills",
       "upstream": "nature",
       "description": "Nature-style manuscript workflow: writing, polishing, figures, statistics, citations, reviewer simulation, rebuttal, paper reading/translation, slides and patents.",
-      "keywords": ["nature", "manuscript", "figures", "rebuttal", "polishing", "translation"],
+      "keywords": [
+        "nature",
+        "manuscript",
+        "figures",
+        "rebuttal",
+        "polishing",
+        "translation"
+      ],
       "skills": [
         "nature-shared",
-        "nature-writing", "nature-polishing", "nature-figure", "nature-statistics", "nature-data",
-        "nature-citation", "nature-ref-verifier", "nature-academic-search", "nature-literature-pipeline",
-        "nature-reviewer", "nature-response", "nature-paper-xray", "nature-paper-card", "nature-reader",
-        "nature-paper-trans", "nature-paper2ppt", "nature-image2ppt", "nature-paper2word",
-        "nature-proposal-writer", "nature-paper-to-patent", "nature-experiment-log"
+        "nature-writing",
+        "nature-polishing",
+        "nature-figure",
+        "nature-statistics",
+        "nature-data",
+        "nature-citation",
+        "nature-ref-verifier",
+        "nature-academic-search",
+        "nature-literature-pipeline",
+        "nature-reviewer",
+        "nature-response",
+        "nature-paper-xray",
+        "nature-paper-card",
+        "nature-reader",
+        "nature-paper-trans",
+        "nature-paper2ppt",
+        "nature-image2ppt",
+        "nature-paper2word",
+        "nature-proposal-writer",
+        "nature-paper-to-patent",
+        "nature-experiment-log"
       ]
+    }
+  ],
+  "external_plugins": [
+    {
+      "name": "academic-research-skills",
+      "description": "Contract-audited academic research pipeline: deep research, paper writing, simulated peer review, revision coaching, rebuttal audit and citation checks (5 skills, 16 slash commands). Referenced directly from upstream, not copied; CC-BY-NC-4.0 (non-commercial use only).",
+      "category": "science",
+      "keywords": [
+        "academic",
+        "writing",
+        "peer-review",
+        "literature-review",
+        "deep-research"
+      ],
+      "license": "CC-BY-NC-4.0",
+      "homepage": "https://github.com/Imbad0202/academic-research-skills",
+      "source": {
+        "source": "github",
+        "repo": "Imbad0202/academic-research-skills"
+      }
     }
   ]
 }

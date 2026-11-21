@@ -25,6 +25,14 @@ def fetch(name, up, cache):
     return dest, git("rev-parse", "HEAD", cwd=dest)
 
 
+def remote_head(url, branch):
+    try:
+        out = git("ls-remote", url, branch)
+        return out.split()[0] if out else None
+    except Exception:
+        return None
+
+
 def tree_hash(path):
     h = hashlib.sha256()
     for p in sorted(path.rglob("*")):
@@ -62,13 +70,22 @@ def main():
             shutil.rmtree(pdir / "skills")
         (pdir / "skills").mkdir(parents=True)
         present = []
-        for s in pl["skills"]:
-            src = src_root / s
+        ignore = shutil.ignore_patterns(".git", "__pycache__", "*.pyc", ".DS_Store")
+        for entry in pl["skills"]:
+            e = {"name": entry} if isinstance(entry, str) else entry
+            s_name = e["name"]
+            s_up = CFG["upstreams"][e.get("upstream", pl["upstream"])]
+            s_repo = repos[e.get("upstream", pl["upstream"])][0]
+            src = s_repo if s_up.get("layout") == "root-skill" else s_repo / s_up["skills_dir"] / s_name
             if not (src / "SKILL.md").exists():
-                missing.append(f"{pl['name']}:{s}")
+                missing.append(f"{pl['name']}:{s_name}")
                 continue
-            shutil.copytree(src, pdir / "skills" / s, ignore=shutil.ignore_patterns(".git", "__pycache__", "*.pyc", ".DS_Store"))
-            present.append(s)
+            shutil.copytree(src, pdir / "skills" / s_name, ignore=ignore)
+            if e.get("upstream", pl["upstream"]) != pl["upstream"]:
+                lic_f = s_repo / s_up["license_file"]
+                if lic_f.exists():
+                    shutil.copy(lic_f, pdir / "skills" / s_name / "UPSTREAM_LICENSE")
+            present.append(s_name)
         lic = repos[pl["upstream"]][0] / up["license_file"]
         if lic.exists():
             shutil.copy(lic, pdir / "UPSTREAM_LICENSE")
@@ -98,6 +115,16 @@ def main():
             "keywords": pl.get("keywords", []),
         })
         lock[pl["name"]] = {"version": version, "skills": present}
+
+    for ex in CFG.get("external_plugins", []):
+        entry = {k: v for k, v in ex.items() if v is not None}
+        market_plugins.append(entry)
+        src = ex["source"]
+        if src.get("source") == "github":
+            lock.setdefault("external", {})[ex["name"]] = {
+                "repo": src["repo"], "ref": src.get("ref"),
+                "commit": src.get("sha") or remote_head(f"https://github.com/{src['repo']}.git", src.get("ref") or "HEAD"),
+            }
 
     m = CFG["marketplace"]
     market = {

@@ -4,6 +4,8 @@ A personal [Claude Code plugin marketplace](https://code.claude.com/docs/en/plug
 
 - [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills) (MIT)
 - [Yuan1z0825/nature-skills](https://github.com/Yuan1z0825/nature-skills) (Apache-2.0)
+- [AIScientists-Dev/academic-humanizer](https://github.com/AIScientists-Dev/academic-humanizer) (MIT), synced into `sci-research-writing`
+- [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills) (CC-BY-NC-4.0, **non-commercial only**), referenced as an external plugin `academic-research-skills` (not copied; it needs its own `shared/`, `scripts/` and hooks)
 
 A GitHub Action (`.github/workflows/sync.yml`) pulls the selected skills from both upstreams **every day** and bumps the plugin version whenever anything changed, so Claude Code picks up the update.
 
@@ -12,7 +14,7 @@ A GitHub Action (`.github/workflows/sync.yml`) pulls the selected skills from bo
 | Plugin | Source | Contents |
 |---|---|---|
 | `sci-computing` | K-Dense | matplotlib, scientific-visualization, seaborn, sympy, matlab, uncertainty-and-units, optimize-for-gpu, qutip, qiskit, pennylane, statistics, scikit-learn, pytorch-lightning, pymoo, pymc, dask, polars, zarr, experimental-design, lab-hardware-cad, markitdown, liteparse … |
-| `sci-research-writing` | K-Dense | scientific-writing, literature-review, citation-management, paper-lookup, pyzotero, peer-review, research-grants, venue-templates, LaTeX/PPTX posters, slides, schematics, hypothesis generation, critical thinking … |
+| `sci-research-writing` | K-Dense + academic-humanizer | scientific-writing, literature-review, citation-management, paper-lookup, pyzotero, peer-review, research-grants, venue-templates, LaTeX/PPTX posters, slides, schematics, hypothesis generation, critical thinking, **academic-humanizer** … |
 | `nature-skills` | nature-skills | nature-writing, polishing, figure, statistics, data, citation, ref-verifier, reviewer, response, paper-xray/card/reader/trans, paper2ppt, paper2word, proposal-writer, paper-to-patent, experiment-log (+ `nature-shared`, required by the others) |
 
 The exact list is in [`sources.json`](sources.json); the pinned upstream commits are in [`sources.lock.json`](sources.lock.json).
@@ -26,6 +28,7 @@ In Claude Code:
 /plugin install sci-computing@jfang-science-skills
 /plugin install sci-research-writing@jfang-science-skills
 /plugin install nature-skills@jfang-science-skills
+/plugin install academic-research-skills@jfang-science-skills
 ```
 
 ### Turn on auto-update

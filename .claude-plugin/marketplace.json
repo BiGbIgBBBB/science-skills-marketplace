@@ -5,7 +5,7 @@
     "url": "https://github.com/BiGbIgBBBB"
   },
   "metadata": {
-    "description": "Curated scientific research skills for photonics / OCT / quantum research, auto-synced daily from K-Dense-AI/scientific-agent-skills and Yuan1z0825/nature-skills."
+    "description": "Curated scientific research skills for photonics / OCT / quantum research, auto-synced daily from K-Dense-AI/scientific-agent-skills, Yuan1z0825/nature-skills and AIScientists-Dev/academic-humanizer, plus Imbad0202/academic-research-skills referenced as an external plugin."
   },
   "plugins": [
     {
@@ -27,7 +27,7 @@
       "name": "sci-research-writing",
       "source": "./plugins/sci-research-writing",
       "description": "Literature search, scientific writing, peer review, grants, posters, slides and research ideation skills.",
-      "version": "1.20261117.2154",
+      "version": "1.20261121.1755",
       "category": "science",
       "keywords": [
         "writing",
@@ -53,6 +53,24 @@
         "polishing",
         "translation"
       ]
+    },
+    {
+      "name": "academic-research-skills",
+      "description": "Contract-audited academic research pipeline: deep research, paper writing, simulated peer review, revision coaching, rebuttal audit and citation checks (5 skills, 16 slash commands). Referenced directly from upstream, not copied; CC-BY-NC-4.0 (non-commercial use only).",
+      "category": "science",
+      "keywords": [
+        "academic",
+        "writing",
+        "peer-review",
+        "literature-review",
+        "deep-research"
+      ],
+      "license": "CC-BY-NC-4.0",
+      "homepage": "https://github.com/Imbad0202/academic-research-skills",
+      "source": {
+        "source": "github",
+        "repo": "Imbad0202/academic-research-skills"
+      }
     }
   ]
 }

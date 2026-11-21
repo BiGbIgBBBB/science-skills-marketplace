@@ -7,6 +7,10 @@
     "nature": {
       "repo": "https://github.com/Yuan1z0825/nature-skills.git",
       "commit": "a65a8364b419e05f7d8d5d96842a1ff7e544b1bb"
+    },
+    "humanizer": {
+      "repo": "https://github.com/AIScientists-Dev/academic-humanizer.git",
+      "commit": "94b88b23703bed7df507acae7d6d5876209a0cdf"
     }
   },
   "sci-computing": {
@@ -41,7 +45,7 @@
     ]
   },
   "sci-research-writing": {
-    "version": "1.20261117.2154",
+    "version": "1.20261121.1755",
     "skills": [
       "scientific-writing",
       "literature-review",
@@ -60,7 +64,8 @@
       "markdown-mermaid-writing",
       "hypothesis-generation",
       "scientific-brainstorming",
-      "scientific-critical-thinking"
+      "scientific-critical-thinking",
+      "academic-humanizer"
     ]
   },
   "nature-skills": {
@@ -89,5 +94,12 @@
       "nature-paper-to-patent",
       "nature-experiment-log"
     ]
+  },
+  "external": {
+    "academic-research-skills": {
+      "repo": "Imbad0202/academic-research-skills",
+      "ref": null,
+      "commit": "00315dfea67cba974583debae32b77bdce659301"
+    }
   }
 }

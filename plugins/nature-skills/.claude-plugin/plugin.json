@@ -1,7 +1,7 @@
 {
   "name": "nature-skills",
-  "version": "1.20261119.1638",
-  "description": "Nature-style manuscript workflow: writing, polishing, figures, statistics, citations, reviewer simulation, rebuttal, paper reading/translation, slides and patents.",
+  "version": "1.20261121.2102",
+  "description": "Manuscript workflow: drafting, polishing and zh-to-en translation, figure QA, reference verification, mock review, response to reviewers, data-availability statements and deep paper reading.",
   "author": {
     "name": "Jingchao Fang",
     "url": "https://github.com/BiGbIgBBBB"
@@ -9,11 +9,11 @@
   "homepage": "https://github.com/Yuan1z0825/nature-skills",
   "license": "Apache-2.0",
   "keywords": [
-    "nature",
     "manuscript",
     "figures",
-    "rebuttal",
     "polishing",
+    "rebuttal",
+    "peer-review",
     "translation"
   ]
 }

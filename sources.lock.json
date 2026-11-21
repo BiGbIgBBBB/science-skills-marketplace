@@ -9,85 +9,62 @@
       "commit": "a65a8364b419e05f7d8d5d96842a1ff7e544b1bb"
     }
   },
+  "photonics-oct": {
+    "version": "1.20261121.2102",
+    "hash": "8fff406f3abc4f21f0955e879799f5c254e6ee2ae924c6f3960aac14a1e5984a",
+    "skills": [
+      "photonics-figure",
+      "photonics-writing"
+    ]
+  },
   "sci-computing": {
-    "version": "1.20261117.2154",
+    "version": "1.20261121.2102",
+    "hash": "8716af307342adaa2cfa4bdd02d3c44f906736e5c1ceb1be0aa544e9edd7560c",
     "skills": [
       "matplotlib",
       "scientific-visualization",
-      "seaborn",
       "sympy",
-      "matlab",
       "uncertainty-and-units",
-      "optimize-for-gpu",
-      "get-available-resources",
+      "statistical-analysis",
       "qutip",
       "qiskit",
       "pennylane",
-      "exploratory-data-analysis",
-      "statistical-analysis",
-      "statistical-power",
-      "statsmodels",
       "scikit-learn",
       "pytorch-lightning",
       "pymoo",
-      "pymc",
-      "dask",
-      "polars",
-      "zarr-python",
-      "experimental-design",
-      "lab-hardware-cad",
-      "markitdown",
-      "liteparse"
+      "optimize-for-gpu",
+      "lab-hardware-cad"
     ]
   },
   "sci-research-writing": {
-    "version": "1.20261117.2154",
+    "version": "1.20261121.2102",
+    "hash": "fda19218c2e6e379603e808e9c192ddbd8a48b34225b9e99fb8699e392084a18",
     "skills": [
-      "scientific-writing",
       "literature-review",
-      "citation-management",
       "paper-lookup",
-      "research-lookup",
+      "citation-management",
       "pyzotero",
-      "peer-review",
-      "scholar-evaluation",
       "research-grants",
       "venue-templates",
       "latex-posters",
-      "pptx-posters",
       "scientific-slides",
-      "scientific-schematics",
-      "markdown-mermaid-writing",
-      "hypothesis-generation",
-      "scientific-brainstorming",
-      "scientific-critical-thinking"
+      "scientific-brainstorming"
     ]
   },
   "nature-skills": {
-    "version": "1.20261119.1638",
+    "version": "1.20261121.2102",
+    "hash": "14a3541ff919d7849575948252b11bdb854a4cd8a31aca92a830a6377396a428",
     "skills": [
       "nature-shared",
       "nature-writing",
       "nature-polishing",
       "nature-figure",
-      "nature-statistics",
       "nature-data",
-      "nature-citation",
       "nature-ref-verifier",
-      "nature-academic-search",
-      "nature-literature-pipeline",
       "nature-reviewer",
       "nature-response",
       "nature-paper-xray",
-      "nature-paper-card",
-      "nature-reader",
-      "nature-paper-trans",
-      "nature-paper2ppt",
-      "nature-image2ppt",
-      "nature-paper2word",
-      "nature-proposal-writer",
-      "nature-paper-to-patent",
-      "nature-experiment-log"
+      "nature-reader"
     ]
   }
 }

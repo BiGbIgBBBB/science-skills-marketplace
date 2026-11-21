@@ -1,0 +1,44 @@
+% photonics-preamble.tex
+% Units and symbols for integrated-photonics / OCT manuscripts.
+% Usage: put this file next to main.tex and add \input{photonics-preamble} after the
+% journal template's own \usepackage lines. Requires siunitx v3 (TeX Live 2021 or later,
+% which is what Overleaf runs).
+%
+% Science's template asks authors not to load extra packages. For a Science-family
+% submission, do not \input this file; write units by hand in the same form.
+
+\usepackage{siunitx}
+\sisetup{
+  separate-uncertainty = true,      % 0.21 +- 0.03 rather than 0.21(3)
+  range-phrase         = {--},      % 1260--1360 nm
+  range-units          = single,
+  per-mode             = symbol,    % dB/cm rather than dB cm^-1
+}
+\DeclareSIUnit\dBm{dBm}
+\DeclareSIUnit\dBc{dBc}
+\DeclareSIUnit\px{px}
+
+% --- recurring symbols (math mode added automatically) ---------------------
+\newcommand{\Vpi}{\ensuremath{V_\pi}}                    % half-wave voltage
+\newcommand{\VpiL}{\ensuremath{V_\pi L}}                 % voltage-length product
+\newcommand{\QL}{\ensuremath{Q_\mathrm{L}}}              % loaded Q
+\newcommand{\Qi}{\ensuremath{Q_\mathrm{i}}}              % intrinsic Q
+\newcommand{\neff}{\ensuremath{n_\mathrm{eff}}}
+\newcommand{\ngr}{\ensuremath{n_\mathrm{g}}}
+\newcommand{\lamO}{\ensuremath{\lambda_0}}               % centre wavelength
+\newcommand{\zmax}{\ensuremath{z_\mathrm{max}}}          % imaging range
+\newcommand{\LN}{LiNbO\textsubscript{3}}
+\newcommand{\SiO}{SiO\textsubscript{2}}
+
+% --- drafting aid ----------------------------------------------------------
+% Marks a missing number, condition or citation. Search for \todo before submitting.
+\providecommand{\todo}[1]{\textbf{[TODO: #1]}}
+
+% --- examples --------------------------------------------------------------
+% \qty{1310}{\nm}                      1310 nm
+% \qtyrange{1260}{1360}{\nm}           1260--1360 nm
+% \qty{0.21 \pm 0.03}{\dB\per\cm}      (0.21 +- 0.03) dB/cm
+% \qty{2.3}{\V\cm}                     2.3 V cm
+% \qty{-152}{\dBc\per\Hz}              -152 dBc/Hz
+% \qty{13}{\dBm}, \qty{400}{\kHz}, \qty{67}{\GHz}, \qty{12}{\um}, \qty{30}{\pm\per\V}
+% \num{1.2e6}                          1.2 x 10^6

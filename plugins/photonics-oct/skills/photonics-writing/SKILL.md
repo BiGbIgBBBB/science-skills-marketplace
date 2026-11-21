@@ -48,7 +48,9 @@ is installed. The reference files hold what those skills do not know about this 
 |---|---|---|
 | Plan a paper, decide the figure sequence | `references/paper-anatomy.md` | `nature-skills:nature-writing` |
 | Draft or restructure a section | `references/paper-anatomy.md`, `references/terminology.md` | `nature-skills:nature-writing` |
-| Polish, tighten, or translate Chinese to English | `references/terminology.md` | `nature-skills:nature-polishing`, then `humanizer:humanizer` if it reads machine-written |
+| Polish, tighten, or translate Chinese to English | `references/terminology.md` | `nature-skills:nature-polishing` |
+| Clean up an AI-assisted draft (stock phrases, over-claiming, clause-stacked sentences) | `references/terminology.md` | `academic-humanizer:academic-humanizer`; give it one of the user's published papers as the voice sample when available |
+| Grant or fellowship proposal (NSF, NIH, DOE) | `references/reporting-checklist.md` for the technical claims | `sci-research-writing:research-grants`, then `academic-humanizer:academic-humanizer` in proposal mode |
 | Check length, structure, back matter, template | `references/journal-guide.md` | `sci-research-writing:venue-templates` for LaTeX scaffolds |
 | Methods, or "is anything missing" | `references/reporting-checklist.md` | — |
 | Figure captions | `references/paper-anatomy.md` (caption section) | `photonics-figure` for the figure itself |
@@ -62,6 +64,12 @@ is installed. The reference files hold what those skills do not know about this 
 The Nature skills are written for Nature-family journals. For Optica-family and AAAS targets,
 keep their argument discipline and apply the limits and structure from
 `references/journal-guide.md` instead of their journal fragments.
+
+`academic-humanizer` draws its examples from machine learning. Its rules carry over unchanged,
+with two adjustments for this field: the evidence a claim points to is a measurement with its
+conditions (wavelength, power, frequency, device count) more often than a benchmark table, and
+"demonstrate" is the normal verb for an experimental device or system result in optics, so keep
+it where a working device backs it and reserve the downgrade for claims about generality.
 
 ## LaTeX conventions
 

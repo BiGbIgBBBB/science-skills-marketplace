@@ -5,14 +5,14 @@
     "url": "https://github.com/BiGbIgBBBB"
   },
   "metadata": {
-    "description": "Skills for integrated-photonics (TFLN) and OCT research: figures, manuscript writing, literature and scientific computing. A hand-written photonics plugin plus a curated subset auto-synced daily from K-Dense-AI/scientific-agent-skills and Yuan1z0825/nature-skills."
+    "description": "Skills for integrated-photonics (TFLN) and OCT research: figures, manuscript writing, literature and scientific computing. A hand-written photonics plugin plus a curated subset auto-synced daily from K-Dense-AI/scientific-agent-skills, Yuan1z0825/nature-skills and AIScientists-Dev/academic-humanizer."
   },
   "plugins": [
     {
       "name": "photonics-oct",
       "source": "./plugins/photonics-oct",
       "description": "Personal defaults for integrated-photonics / OCT work: matplotlib figure style and plot recipes for Optica, Nature and Science journals, and a LaTeX manuscript guide with photonics terminology. Start here for any figure or paper task.",
-      "version": "1.20261121.2102",
+      "version": "1.20261121.2149",
       "category": "science",
       "keywords": [
         "photonics",
@@ -68,6 +68,20 @@
         "rebuttal",
         "peer-review",
         "translation"
+      ]
+    },
+    {
+      "name": "academic-humanizer",
+      "source": "./plugins/academic-humanizer",
+      "description": "Remove AI tells from AI-assisted academic prose and grant proposals (NSF, NIH) while keeping scholarly voice and every number, claim and citation intact.",
+      "version": "1.20261121.2146",
+      "category": "science",
+      "keywords": [
+        "writing",
+        "editing",
+        "humanizer",
+        "manuscript",
+        "grants"
       ]
     }
   ]

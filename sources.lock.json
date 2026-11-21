@@ -7,11 +7,15 @@
     "nature": {
       "repo": "https://github.com/Yuan1z0825/nature-skills.git",
       "commit": "a65a8364b419e05f7d8d5d96842a1ff7e544b1bb"
+    },
+    "humanizer": {
+      "repo": "https://github.com/AIScientists-Dev/academic-humanizer.git",
+      "commit": "94b88b23703bed7df507acae7d6d5876209a0cdf"
     }
   },
   "photonics-oct": {
-    "version": "1.20261121.2102",
-    "hash": "8fff406f3abc4f21f0955e879799f5c254e6ee2ae924c6f3960aac14a1e5984a",
+    "version": "1.20261121.2149",
+    "hash": "91ebbb8492e783ebf9e857579b42bc93e25660ec47f807f0971c1d8bdbd34b4a",
     "skills": [
       "photonics-figure",
       "photonics-writing"
@@ -65,6 +69,13 @@
       "nature-response",
       "nature-paper-xray",
       "nature-reader"
+    ]
+  },
+  "academic-humanizer": {
+    "version": "1.20261121.2146",
+    "hash": "76ae2813d99f2794f3e3858966da5e8964c3e8e4e1710d417bb16aa06348a98f",
+    "skills": [
+      "academic-humanizer"
     ]
   }
 }

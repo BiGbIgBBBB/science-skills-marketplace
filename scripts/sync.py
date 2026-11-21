@@ -8,7 +8,9 @@ Two kinds of plugin are declared in sources.json:
 * upstream plugins ("upstream": "<name>") - their skills/ directory is rebuilt on
   every run from the named upstream repository. Never edit those files by hand;
   the next sync overwrites them. Per-skill "exclude" globs drop bulky or
-  irrelevant upstream files.
+  irrelevant upstream files. An upstream normally keeps one directory per skill
+  under "skills_dir"; a repository that is itself a single skill (SKILL.md at
+  its root) declares "root_skill": "<skill name>" instead.
 * local plugins ("local": true) - hand-written skills kept in this repository.
   The sync leaves their skills/ directory untouched and only refreshes the
   manifest and version.
@@ -17,28 +19,42 @@ A plugin's version is bumped only when the content of its skills/ directory
 differs from the hash recorded in sources.lock.json.
 
 --offline skips the upstream fetch and refreshes only local plugins and manifests.
+
+Exit status: 0 on success; 3 when an upstream could not be fetched (its plugins
+are left untouched, everything else is synced and safe to commit); anything else
+is a crash and the working tree should not be committed.
 """
-import argparse, datetime, fnmatch, hashlib, json, shutil, subprocess, sys, tempfile
+import argparse, datetime, fnmatch, hashlib, json, os, shutil, subprocess, sys, tempfile, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CFG = json.loads((ROOT / "sources.json").read_text())
 LOCK_PATH = ROOT / "sources.lock.json"
 ALWAYS_IGNORE = (".git", "__pycache__", "*.pyc", ".DS_Store")
+EXIT_PARTIAL = 3  # the tree is consistent and safe to commit, but an upstream was unreachable
 
 
 def git(*args, cwd=None):
     return subprocess.run(["git", *args], cwd=cwd, check=True, capture_output=True, text=True).stdout.strip()
 
 
-def fetch(name, up, cache):
+def fetch(name, up, cache, attempts=3):
+    """Shallow-fetch one upstream. Retries transient network failures."""
     dest = cache / name
-    if (dest / ".git").exists():
-        git("fetch", "--depth", "1", "origin", up["branch"], cwd=dest)
-        git("reset", "--hard", "FETCH_HEAD", cwd=dest)
-    else:
-        git("clone", "--depth", "1", "--branch", up["branch"], up["repo"], str(dest))
-    return dest, git("rev-parse", "HEAD", cwd=dest)
+    for attempt in range(1, attempts + 1):
+        try:
+            if (dest / ".git").exists():
+                git("remote", "set-url", "origin", up["repo"], cwd=dest)
+                git("fetch", "--depth", "1", "origin", up["branch"], cwd=dest)
+                git("reset", "--hard", "FETCH_HEAD", cwd=dest)
+            else:
+                shutil.rmtree(dest, ignore_errors=True)
+                git("clone", "--depth", "1", "--branch", up["branch"], up["repo"], str(dest))
+            return dest, git("rev-parse", "HEAD", cwd=dest)
+        except subprocess.CalledProcessError as e:
+            if attempt == attempts:
+                raise RuntimeError((e.stderr or str(e)).strip().splitlines()[-1]) from e
+            time.sleep(5 * attempt)
 
 
 def tree_hash(path):
@@ -74,20 +90,34 @@ def make_ignore(skill_root, patterns):
     return ignore
 
 
-def copy_upstream_skills(pl, src_root, pdir, missing):
+def copy_upstream_skills(pl, up, repo_dir, pdir, missing):
+    """Rebuild pdir/skills from the upstream checkout.
+
+    A skill that has disappeared upstream (renamed or removed) keeps its last
+    synced copy and is reported, so an upstream reshuffle never silently deletes
+    a skill that is installed and in use.
+    """
     skills_dir = pdir / "skills"
+    backup = None
     if skills_dir.exists():
-        shutil.rmtree(skills_dir)
+        backup = Path(tempfile.mkdtemp(prefix="skills-prev-")) / "skills"
+        shutil.move(str(skills_dir), str(backup))
     skills_dir.mkdir(parents=True)
     present = []
     excludes = pl.get("exclude", {})
     for s in pl["skills"]:
-        src = src_root / s
-        if not (src / "SKILL.md").exists():
-            missing.append(f"{pl['name']}:{s}")
+        src = repo_dir if up.get("root_skill") == s else repo_dir / up.get("skills_dir", "skills") / s
+        if (src / "SKILL.md").exists():
+            shutil.copytree(src, skills_dir / s, ignore=make_ignore(src, excludes.get(s, [])))
+        elif backup is not None and (backup / s / "SKILL.md").exists():
+            shutil.copytree(backup / s, skills_dir / s)
+            missing.append(f"{pl['name']}:{s} (kept the last synced copy)")
+        else:
+            missing.append(f"{pl['name']}:{s} (no copy available)")
             continue
-        shutil.copytree(src, skills_dir / s, ignore=make_ignore(src, excludes.get(s, [])))
         present.append(s)
+    if backup is not None:
+        shutil.rmtree(backup.parent, ignore_errors=True)
     return present
 
 
@@ -98,14 +128,23 @@ def main():
     a = ap.parse_args()
 
     old_lock = json.loads(LOCK_PATH.read_text()) if LOCK_PATH.exists() else {}
+    unreachable = {}
     if a.offline:
         repos = {}
         lock = {"upstreams": old_lock.get("upstreams", {})}
     else:
         cache = Path(a.cache) if a.cache else Path(tempfile.mkdtemp(prefix="skills-upstream-"))
         cache.mkdir(parents=True, exist_ok=True)
-        repos = {n: fetch(n, u, cache) for n, u in CFG["upstreams"].items()}
-        lock = {"upstreams": {n: {"repo": CFG["upstreams"][n]["repo"], "commit": c} for n, (_, c) in repos.items()}}
+        repos, lock = {}, {"upstreams": {}}
+        for n, u in CFG["upstreams"].items():
+            try:
+                repos[n] = fetch(n, u, cache)
+                lock["upstreams"][n] = {"repo": u["repo"], "commit": repos[n][1]}
+            except RuntimeError as e:
+                # Leave this upstream's plugins exactly as they are and carry on with the others.
+                unreachable[n] = str(e)
+                if n in old_lock.get("upstreams", {}):
+                    lock["upstreams"][n] = old_lock["upstreams"][n]
     market_plugins, changed, missing = [], [], []
     owner = CFG["marketplace"]["owner"]
 
@@ -123,11 +162,11 @@ def main():
         else:
             up = CFG["upstreams"][pl["upstream"]]
             homepage, license_ = up["repo"].removesuffix(".git"), up["license"]
-            if a.offline:
-                present = prev.get("skills", [])
+            if a.offline or pl["upstream"] in unreachable:
+                present = prev.get("skills") or sorted(p.parent.name for p in skills_dir.glob("*/SKILL.md"))
             else:
                 repo_dir = repos[pl["upstream"]][0]
-                present = copy_upstream_skills(pl, repo_dir / up["skills_dir"], pdir, missing)
+                present = copy_upstream_skills(pl, up, repo_dir, pdir, missing)
                 lic = repo_dir / up["license_file"]
                 if lic.exists():
                     shutil.copy(lic, pdir / "UPSTREAM_LICENSE")
@@ -171,8 +210,19 @@ def main():
 
     print("changed plugins:", ", ".join(changed) or "none")
     if missing:
-        print("WARNING: skills not found upstream (renamed/removed?):", ", ".join(missing), file=sys.stderr)
+        msg = "skills not found upstream (renamed or removed?): " + ", ".join(missing)
+        print("WARNING: " + msg, file=sys.stderr)
+        if os.environ.get("GITHUB_ACTIONS"):
+            print(f"::warning title=Upstream skill missing::{msg}")
+    if unreachable:
+        for n, why in unreachable.items():
+            msg = f"upstream '{n}' could not be fetched, its plugins were left unchanged: {why}"
+            print("ERROR: " + msg, file=sys.stderr)
+            if os.environ.get("GITHUB_ACTIONS"):
+                print(f"::error title=Upstream unreachable::{msg}")
+        return EXIT_PARTIAL
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

@@ -18,13 +18,43 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Sync skills from upstream
-        run: python3 scripts/sync.py
+        id: sync
+        run: |
+          set +e
+          python3 scripts/sync.py
+          rc=$?
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          # 0 = synced; 3 = an upstream was unreachable but the tree is consistent.
+          # Anything else is a crash: stop before committing a half-built tree.
+          if [ "$rc" -ne 0 ] && [ "$rc" -ne 3 ]; then exit "$rc"; fi
+      - name: Check manifests
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, sys
+          market = json.loads(pathlib.Path(".claude-plugin/marketplace.json").read_text())
+          bad = []
+          for entry in market["plugins"]:
+              root = pathlib.Path(entry["source"])
+              manifest = json.loads((root / ".claude-plugin/plugin.json").read_text())
+              if manifest["version"] != entry["version"]:
+                  bad.append(f"{entry['name']}: version differs between plugin.json and marketplace.json")
+              skills = list(root.glob("skills/*/SKILL.md"))
+              if not skills:
+                  bad.append(f"{entry['name']}: no skills")
+              for skill in skills:
+                  if not skill.read_text().startswith("---"):
+                      bad.append(f"{skill}: missing frontmatter")
+          print(f"{len(market['plugins'])} plugins checked")
+          if bad:
+              print("\n".join(bad)); sys.exit(1)
+          PY
       - name: Commit and push if changed
         run: |
           if [ -z "$(git status --porcelain)" ]; then echo "No upstream changes."; exit 0; fi
@@ -32,4 +62,14 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -m "chore: sync upstream skills ($(date -u +%Y-%m-%d))"
-          git push
+          # main may have moved while this job ran; replay the sync commit on top and retry.
+          for attempt in 1 2 3; do
+            if git push; then exit 0; fi
+            git pull --rebase
+            sleep $((attempt * 5))
+          done
+          exit 1
+      - name: Fail if an upstream was unreachable
+        if: steps.sync.outputs.rc != '0'
+        run: |
+          echo "An upstream could not be fetched; see the annotations on this run." && exit 1

@@ -2,11 +2,12 @@
   "marketplace": {
     "name": "jfang-science-skills",
     "owner": { "name": "Jingchao Fang", "url": "https://github.com/BiGbIgBBBB" },
-    "description": "Skills for integrated-photonics (TFLN) and OCT research: figures, manuscript writing, literature and scientific computing. A hand-written photonics plugin plus a curated subset auto-synced daily from K-Dense-AI/scientific-agent-skills and Yuan1z0825/nature-skills."
+    "description": "Skills for integrated-photonics (TFLN) and OCT research: figures, manuscript writing, literature and scientific computing. A hand-written photonics plugin plus a curated subset auto-synced daily from K-Dense-AI/scientific-agent-skills, Yuan1z0825/nature-skills and AIScientists-Dev/academic-humanizer."
   },
   "upstreams": {
     "kdense": { "repo": "https://github.com/K-Dense-AI/scientific-agent-skills.git", "branch": "main", "skills_dir": "skills", "license_file": "LICENSE.md", "license": "MIT" },
-    "nature": { "repo": "https://github.com/Yuan1z0825/nature-skills.git", "branch": "main", "skills_dir": "skills", "license_file": "LICENSE", "license": "Apache-2.0" }
+    "nature": { "repo": "https://github.com/Yuan1z0825/nature-skills.git", "branch": "main", "skills_dir": "skills", "license_file": "LICENSE", "license": "Apache-2.0" },
+    "humanizer": { "repo": "https://github.com/AIScientists-Dev/academic-humanizer.git", "branch": "main", "root_skill": "academic-humanizer", "license_file": "LICENSE", "license": "MIT" }
   },
   "plugins": [
     {
@@ -53,6 +54,16 @@
       ],
       "exclude": {
         "nature-figure": ["assets/figures4papers", "assets/gallery", "references/demos.md"]
+      }
+    },
+    {
+      "name": "academic-humanizer",
+      "upstream": "humanizer",
+      "description": "Remove AI tells from AI-assisted academic prose and grant proposals (NSF, NIH) while keeping scholarly voice and every number, claim and citation intact.",
+      "keywords": ["writing", "editing", "humanizer", "manuscript", "grants"],
+      "skills": ["academic-humanizer"],
+      "exclude": {
+        "academic-humanizer": ["assets", "README.md", "LICENSE", ".gitignore", ".github"]
       }
     }
   ]

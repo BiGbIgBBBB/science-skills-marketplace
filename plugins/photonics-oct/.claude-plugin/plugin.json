@@ -1,6 +1,6 @@
 {
   "name": "photonics-oct",
-  "version": "1.20261121.2102",
+  "version": "1.20261121.2149",
   "description": "Personal defaults for integrated-photonics / OCT work: matplotlib figure style and plot recipes for Optica, Nature and Science journals, and a LaTeX manuscript guide with photonics terminology. Start here for any figure or paper task.",
   "author": {
     "name": "Jingchao Fang",

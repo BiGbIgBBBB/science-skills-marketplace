@@ -18,6 +18,12 @@ Two kinds of plugin are declared in sources.json:
 A plugin's version is bumped only when the content of its skills/ directory
 differs from the hash recorded in sources.lock.json.
 
+"external_plugins" are complete plugins that live in someone else's repository
+and cannot be copied piecemeal (they ship hooks, commands or shared scripts).
+They are only listed in marketplace.json with a GitHub source; Claude Code
+installs and updates them straight from that repository. The sync records the
+commit their default branch is at, for reference.
+
 --offline skips the upstream fetch and refreshes only local plugins and manifests.
 
 Exit status: 0 on success; 3 when an upstream could not be fetched (its plugins
@@ -55,6 +61,12 @@ def fetch(name, up, cache, attempts=3):
             if attempt == attempts:
                 raise RuntimeError((e.stderr or str(e)).strip().splitlines()[-1]) from e
             time.sleep(5 * attempt)
+
+
+def remote_head(repo, ref=None):
+    """Commit a remote branch (default: HEAD) points at, without cloning."""
+    out = git("ls-remote", f"https://github.com/{repo}.git", ref or "HEAD")
+    return out.split()[0] if out else ""
 
 
 def tree_hash(path):
@@ -197,6 +209,29 @@ def main():
         })
         lock[pl["name"]] = {"version": version, "hash": digest, "skills": present}
 
+    stale_external = []
+    for ex in CFG.get("external_plugins", []):
+        source = {"source": "github", "repo": ex["repo"]}
+        if ex.get("ref"):
+            source["ref"] = ex["ref"]
+        market_plugins.append({
+            "name": ex["name"],
+            "source": source,
+            "description": ex["description"],
+            "category": "science",
+            "keywords": ex.get("keywords", []),
+            "license": ex["license"],
+            "homepage": f"https://github.com/{ex['repo']}",
+        })
+        prev = old_lock.get(ex["name"], {})
+        commit = prev.get("commit", "")
+        if not a.offline:
+            try:
+                commit = remote_head(ex["repo"], ex.get("ref")) or commit
+            except subprocess.CalledProcessError:
+                stale_external.append(ex["name"])  # listing is unaffected; only the recorded commit is stale
+        lock[ex["name"]] = {"external": True, "repo": ex["repo"], "commit": commit}
+
     m = CFG["marketplace"]
     market = {
         "name": m["name"],
@@ -214,6 +249,8 @@ def main():
         print("WARNING: " + msg, file=sys.stderr)
         if os.environ.get("GITHUB_ACTIONS"):
             print(f"::warning title=Upstream skill missing::{msg}")
+    if stale_external:
+        print("WARNING: could not read the current commit of external plugin(s): " + ", ".join(stale_external), file=sys.stderr)
     if unreachable:
         for n, why in unreachable.items():
             msg = f"upstream '{n}' could not be fetched, its plugins were left unchanged: {why}"

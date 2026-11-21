@@ -2,7 +2,7 @@
   "marketplace": {
     "name": "jfang-science-skills",
     "owner": { "name": "Jingchao Fang", "url": "https://github.com/BiGbIgBBBB" },
-    "description": "Skills for integrated-photonics (TFLN) and OCT research: figures, manuscript writing, literature and scientific computing. A hand-written photonics plugin plus a curated subset auto-synced daily from K-Dense-AI/scientific-agent-skills, Yuan1z0825/nature-skills and AIScientists-Dev/academic-humanizer."
+    "description": "Skills for integrated-photonics (TFLN) and OCT research: figures, manuscript writing, literature and scientific computing. A hand-written photonics plugin plus a curated subset auto-synced daily from K-Dense-AI/scientific-agent-skills, Yuan1z0825/nature-skills and AIScientists-Dev/academic-humanizer, plus Imbad0202/academic-research-skills listed as an external plugin."
   },
   "upstreams": {
     "kdense": { "repo": "https://github.com/K-Dense-AI/scientific-agent-skills.git", "branch": "main", "skills_dir": "skills", "license_file": "LICENSE.md", "license": "MIT" },
@@ -65,6 +65,15 @@
       "exclude": {
         "academic-humanizer": ["assets", "README.md", "LICENSE", ".gitignore", ".github"]
       }
+    }
+  ],
+  "external_plugins": [
+    {
+      "name": "academic-research-skills",
+      "repo": "Imbad0202/academic-research-skills",
+      "license": "CC-BY-NC-4.0",
+      "description": "Academic research pipeline: deep research, paper writing, simulated peer review, revision coaching, rebuttal audit and citation checks (5 skills, 16 slash commands, plus session and write-guard hooks). Installed straight from the author's repository, not copied here. CC-BY-NC-4.0: non-commercial use only.",
+      "keywords": ["academic", "writing", "peer-review", "literature-review", "deep-research"]
     }
   ]
 }

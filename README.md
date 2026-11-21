@@ -14,7 +14,8 @@ bumps a plugin's version whenever its content changed, so Claude Code picks up t
 
 ## Plugins
 
-35 skills in five plugins.
+35 skills in five plugins kept in this repository, plus one external plugin that is listed here
+and installed from its author's repository.
 
 ### `photonics-oct` (written here, not synced)
 
@@ -45,6 +46,25 @@ pf.save(fig, "fig2_resonance")               # PDF + PNG at exact size, with an 
 The exact list is in [`sources.json`](sources.json); the pinned upstream commits and content
 hashes are in [`sources.lock.json`](sources.lock.json).
 
+### Listed, not copied
+
+| Plugin | What it is |
+|---|---|
+| `academic-research-skills` ([Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills), CC-BY-NC-4.0) | A complete research-to-submission pipeline: 5 skills (deep-research, academic-paper, academic-paper-reviewer, academic-pipeline, sr-screener) and 16 `/ars-*` commands. |
+
+This one is a whole plugin with its own hooks, commands and shared scripts, so it cannot be
+trimmed skill by skill. The marketplace only points at the author's repository; Claude Code
+installs and updates it from there, on the author's release schedule. Two things to know before
+installing it:
+
+- It installs a `SessionStart` hook and a `PreToolUse` hook that runs on every Write, Edit and
+  Bash call (a write-scope guard). Uninstall the plugin to remove them.
+- Its licence is non-commercial. The other plugins here are MIT or Apache-2.0.
+
+It overlaps with `nature-writing`, `nature-reviewer`, `nature-response` and `literature-review`.
+`photonics-writing` routes to those, not to this plugin; call its `/ars-*` commands directly
+when you want its pipeline.
+
 ## Install
 
 In Claude Code:
@@ -56,6 +76,7 @@ In Claude Code:
 /plugin install sci-research-writing@jfang-science-skills
 /plugin install nature-skills@jfang-science-skills
 /plugin install academic-humanizer@jfang-science-skills
+/plugin install academic-research-skills@jfang-science-skills   # optional, see "Listed, not copied"
 ```
 
 A plugin added to the marketplace later is not installed by auto-update; install it once by
@@ -108,7 +129,8 @@ workflow runs on that push, daily, or by hand from the Actions tab. Files under
 `plugins/sci-computing`, `plugins/sci-research-writing`, `plugins/nature-skills` and
 `plugins/academic-humanizer` are overwritten on every sync, so do not edit them by hand. A per-skill `exclude` list drops bulky
 upstream files (it currently removes 30 MB of example images from `nature-figure`). If a skill
-is renamed or removed upstream, the sync keeps the last copy and warns. To add another upstream
+is renamed or removed upstream, the sync keeps the last copy and warns. To list a complete
+third-party plugin without copying it, add it under `external_plugins`. To add another upstream
 repository, add it under `upstreams` (use `"root_skill"` when the repository is itself one
 skill with `SKILL.md` at its root) and add a plugin entry that names it.
 

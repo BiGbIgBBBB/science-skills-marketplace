@@ -40,7 +40,15 @@ jobs:
           import json, pathlib, sys
           market = json.loads(pathlib.Path(".claude-plugin/marketplace.json").read_text())
           bad = []
+          names = [e["name"] for e in market["plugins"]]
+          if len(names) != len(set(names)):
+              bad.append("duplicate plugin names in marketplace.json")
           for entry in market["plugins"]:
+              if isinstance(entry["source"], dict):
+                  # External plugin: installed from its own repository, nothing to check locally.
+                  if entry["source"].get("source") != "github" or "/" not in entry["source"].get("repo", ""):
+                      bad.append(f"{entry['name']}: external source must be a GitHub owner/repo")
+                  continue
               root = pathlib.Path(entry["source"])
               manifest = json.loads((root / ".claude-plugin/plugin.json").read_text())
               if manifest["version"] != entry["version"]:

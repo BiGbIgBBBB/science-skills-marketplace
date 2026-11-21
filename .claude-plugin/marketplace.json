@@ -5,7 +5,7 @@
     "url": "https://github.com/BiGbIgBBBB"
   },
   "metadata": {
-    "description": "Skills for integrated-photonics (TFLN) and OCT research: figures, manuscript writing, literature and scientific computing. A hand-written photonics plugin plus a curated subset auto-synced daily from K-Dense-AI/scientific-agent-skills, Yuan1z0825/nature-skills and AIScientists-Dev/academic-humanizer."
+    "description": "Skills for integrated-photonics (TFLN) and OCT research: figures, manuscript writing, literature and scientific computing. A hand-written photonics plugin plus a curated subset auto-synced daily from K-Dense-AI/scientific-agent-skills, Yuan1z0825/nature-skills and AIScientists-Dev/academic-humanizer, plus Imbad0202/academic-research-skills listed as an external plugin."
   },
   "plugins": [
     {
@@ -83,6 +83,24 @@
         "manuscript",
         "grants"
       ]
+    },
+    {
+      "name": "academic-research-skills",
+      "source": {
+        "source": "github",
+        "repo": "Imbad0202/academic-research-skills"
+      },
+      "description": "Academic research pipeline: deep research, paper writing, simulated peer review, revision coaching, rebuttal audit and citation checks (5 skills, 16 slash commands, plus session and write-guard hooks). Installed straight from the author's repository, not copied here. CC-BY-NC-4.0: non-commercial use only.",
+      "category": "science",
+      "keywords": [
+        "academic",
+        "writing",
+        "peer-review",
+        "literature-review",
+        "deep-research"
+      ],
+      "license": "CC-BY-NC-4.0",
+      "homepage": "https://github.com/Imbad0202/academic-research-skills"
     }
   ]
 }

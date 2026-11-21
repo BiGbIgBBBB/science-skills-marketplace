@@ -77,5 +77,10 @@
     "skills": [
       "academic-humanizer"
     ]
+  },
+  "academic-research-skills": {
+    "external": true,
+    "repo": "Imbad0202/academic-research-skills",
+    "commit": "00315dfea67cba974583debae32b77bdce659301"
   }
 }

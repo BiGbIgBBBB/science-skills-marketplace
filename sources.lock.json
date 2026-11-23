@@ -2,7 +2,7 @@
   "upstreams": {
     "kdense": {
       "repo": "https://github.com/K-Dense-AI/scientific-agent-skills.git",
-      "commit": "ec59a29a03d5c40f73ab40878df04860bc00e876"
+      "commit": "c21d13b3cc2894680229ba9959a53281acb9200e"
     },
     "nature": {
       "repo": "https://github.com/Yuan1z0825/nature-skills.git",
@@ -81,6 +81,6 @@
   "academic-research-skills": {
     "external": true,
     "repo": "Imbad0202/academic-research-skills",
-    "commit": "ae243ac2ad6ef2deeb46e35b636e6a2d137e50ec"
+    "commit": "83c23082f3613b1b105f5a93642efda2cca628b2"
   }
 }

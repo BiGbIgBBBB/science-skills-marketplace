@@ -2,7 +2,7 @@
 
 What a reviewer of an integrated-photonics or OCT paper expects to find. Use it two ways: to
 list what to ask the user for before drafting Methods, and to audit a finished draft. Mark
-each item as present, missing, or not applicable; never fill a missing item with a typical
+each item as present, missing, or not applicable. Never fill a missing item with a typical
 value.
 
 ## Chip and fabrication
@@ -55,7 +55,7 @@ value.
 - Sensitivity: value, how measured (mirror plus calibrated attenuation), sample power and
   A-scan rate at which it was measured, and the shot-noise limit for comparison.
 - Roll-off: 6-dB depth, and the imaging range set by sampling.
-- A-scan rate; B-scan and volume size and acquisition time.
+- A-scan rate, B-scan and volume size, and acquisition time.
 - Detection: detector bandwidth, digitizer rate and bit depth.
 - Processing: background subtraction, k-linearization, dispersion compensation, windowing,
   averaging or registration, and whether images are single-frame.
@@ -66,7 +66,7 @@ value.
   statement.
 - For in vivo imaging: power on the sample and the exposure standard it is compared against
   (ANSI Z136.1 or IEC 60825-1), with the limit that applies.
-- Scan protocol and field of view; scale bars in every image, with the refractive index
+- Scan protocol and field of view. Scale bars in every image, with the refractive index
   assumed for depth.
 - Display: dB scale, dynamic range, same window for images being compared.
 - Reference comparison: the system compared against and its settings.

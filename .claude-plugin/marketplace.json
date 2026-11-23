@@ -12,7 +12,7 @@
       "name": "photonics-oct",
       "source": "./plugins/photonics-oct",
       "description": "Personal defaults for integrated-photonics / OCT work: matplotlib figure style and plot recipes for Optica, Nature and Science journals, and a LaTeX manuscript guide with photonics terminology. Start here for any figure or paper task.",
-      "version": "1.20261121.2149",
+      "version": "1.20261123.2221",
       "category": "science",
       "keywords": [
         "photonics",

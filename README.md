@@ -22,7 +22,7 @@ and installed from its author's repository.
 | Skill | What it does |
 |---|---|
 | `photonics-figure` | Entry point for any plot. Python/matplotlib at the exact column width of Optica, Optics Express, Nature, Nature Communications, Science or Science Advances, with the right fonts and panel labels, an export audit, and tested recipes for transmission spectra, resonance/Q fits, EO response, OCT PSF and roll-off, B-scans, noise spectra and mode profiles. |
-| `photonics-writing` | Entry point for any paper task. LaTeX defaults, journal limits and structure, photonics and OCT terminology (including Chinese-to-English pitfalls), a reporting checklist, a `siunitx` preamble, and a routing table to the general writing skills below. |
+| `photonics-writing` | Entry point for any paper task. Enforces the PI's house style (no semicolons, experimental results in the past tense) with `scripts/check_style.py`, and holds LaTeX defaults, journal limits and structure, photonics and OCT terminology (including Chinese-to-English pitfalls), a reporting checklist, a `siunitx` preamble, and a routing table to the general writing skills below. |
 
 The two libraries can be used directly:
 
@@ -146,7 +146,8 @@ Skills that were removed in the November 2026 clean-up and can be added back by 
   nature-experiment-log
 
 **My own skills.** Edit the files under `plugins/photonics-oct/skills/` and push to `main`; the
-workflow bumps the plugin version. After changing the plotting library, run its regression demo:
+workflow bumps the plugin version. After changing the style checker, run it on a draft with known semicolons and tense errors.
+After changing the plotting library, run its regression demo:
 
 ```
 python3 plugins/photonics-oct/skills/photonics-figure/scripts/photonics_plots.py demo optica /tmp/demo

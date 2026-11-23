@@ -1,7 +1,7 @@
 # Terminology, symbols and units
 
 Pick one form per term and hold it for the whole manuscript. The forms below are the ones most
-used in Optica-family and Nature Photonics papers; when the user's draft consistently uses
+used in Optica-family and Nature Photonics papers. When the user's draft consistently uses
 another, keep theirs.
 
 ## Terms
@@ -11,26 +11,26 @@ another, keep theirs.
 | thin-film lithium niobate (TFLN) | LNOI and TFLN mixed | "lithium niobate on insulator (LNOI)" is fine if used alone throughout. Hyphenate "thin-film" before a noun. |
 | photonic integrated circuit (PIC) | photonics integrated circuit | |
 | electro-optic (EO) | electrooptic, electro-optical | |
-| half-wave voltage $V_\pi$; voltage–length product $V_\pi L$ | "Vpi" | Give $V_\pi L$ in V·cm and say DC or the RF frequency. |
+| half-wave voltage $V_\pi$, voltage–length product $V_\pi L$ | "Vpi" | Give $V_\pi L$ in V·cm and say DC or the RF frequency. |
 | optical coherence tomography (OCT) | | Define in the abstract and again in the text. |
 | swept-source OCT (SS-OCT), spectral-domain OCT (SD-OCT) | Fourier-domain when the type is known | "Fourier-domain OCT" covers both. |
-| A-scan, B-scan, en face | A-line and A-scan mixed | "A-scan rate" in kHz; "en face image". |
+| A-scan, B-scan, en face | A-line and A-scan mixed | "A-scan rate" in kHz, "en face image". |
 | axial resolution, lateral resolution | depth resolution | Say "in air" or "in tissue (n = 1.38)". |
 | sensitivity | SNR, when the minimum detectable reflectivity is meant | Sensitivity is the sample reflectivity giving SNR = 1, in dB. |
-| sensitivity roll-off; 6-dB roll-off depth | fall-off | |
-| imaging range, imaging depth | | Range is set by sampling; depth by the sample. Do not swap them. |
+| sensitivity roll-off, 6-dB roll-off depth | fall-off | |
+| imaging range, imaging depth | | Sampling sets the range and the sample sets the depth. Do not swap them. |
 | insertion loss (fibre-to-fibre), on-chip loss, coupling loss per facet | "loss" unqualified | |
 | propagation loss | waveguide loss | In dB/cm, with the method (cut-back, resonator Q). |
 | loaded Q ($Q_\mathrm{L}$), intrinsic Q ($Q_\mathrm{i}$) | "Q factor" unqualified | |
 | 3-dB electro-optic bandwidth | 3-dB bandwidth unqualified | See dB conventions below. |
-| extinction ratio | contrast | In dB; DC or dynamic. |
-| free spectral range (FSR) | | In GHz or nm; say which. |
+| extinction ratio | contrast | In dB. Say DC or dynamic. |
+| free spectral range (FSR) | | In GHz or nm. Say which. |
 | TE, TM (fundamental: TE$_0$) | quasi-TE on every use | Define once as quasi-TE if needed. |
 | x-cut, z-cut | X-cut | |
 | wavelength-swept laser, swept source | sweeping laser | "sweep rate" in kHz, "sweep range" in nm. |
 
 Compound modifiers take a hyphen before the noun and none after it: "a 3-dB bandwidth of
-40 GHz", "the bandwidth is 3 dB down"; "a low-loss waveguide", "the waveguide is low loss".
+40 GHz" and "the bandwidth is 3 dB down", "a low-loss waveguide", "the waveguide is low loss".
 
 ## dB conventions
 
@@ -41,7 +41,7 @@ Compound modifiers take a hyphen before the noun and none after it: "a 3-dB band
   20 log10. Its 3-dB point is where the modulation amplitude falls to 71%. If a paper being
   compared against quotes an optical 3-dB (electrical 6-dB) bandwidth, convert before comparing
   and say so.
-- dB is a ratio; dBm is power referred to 1 mW. Losses are in dB, powers in dBm.
+- dB is a ratio and dBm is power referred to 1 mW. Losses are in dB, powers in dBm.
 - Write "−3 dB" with a minus sign for a level and "3-dB bandwidth" for the modifier.
 
 ## Symbols
@@ -59,8 +59,8 @@ Compound modifiers take a hyphen before the noun and none after it: "a 3-dB band
 | EO coefficient | $r_{33}$ | pm/V |
 | A-scan rate | $f_\mathrm{A}$ | kHz |
 
-Variables are italic; descriptive subscripts are upright (`n_\mathrm{eff}`, `Q_\mathrm{L}`,
-`z_\mathrm{max}`); subscripts that are themselves variables stay italic (`V_\pi`, `r_{33}`).
+Variables are italic. Descriptive subscripts are upright (`n_\mathrm{eff}`, `Q_\mathrm{L}`,
+`z_\mathrm{max}`), and subscripts that are themselves variables stay italic (`V_\pi`, `r_{33}`).
 Units are upright with a thin space, which `siunitx` handles.
 
 ## Relations worth getting right
@@ -75,7 +75,7 @@ State which one was used when a number in the paper is "theoretical".
 - Intrinsic Q from loaded Q and the normalized on-resonance transmission $T_0$:
   $Q_\mathrm{i} = 2Q_\mathrm{L}/(1 \pm \sqrt{T_0})$, plus for under-coupling and minus for
   over-coupling.
-- Loss from intrinsic Q: $\alpha = 2\pi n_\mathrm{g}/(Q_\mathrm{i}\lambda_0)$ in inverse length;
+- Loss from intrinsic Q: $\alpha = 2\pi n_\mathrm{g}/(Q_\mathrm{i}\lambda_0)$ in inverse length.
   multiply by 4.343 for dB per the same length.
 - Wavelength to frequency span: $\Delta\nu = c\,\Delta\lambda/\lambda_0^2$.
 
@@ -106,5 +106,5 @@ Common renderings that come out wrong in direct translation:
 | 调制带宽 | modulation bandwidth, EO bandwidth | modulating bandwidth |
 | 消光比 | extinction ratio | |
 | 相干长度 | coherence length | coherent length |
-| 实现了 | "we demonstrate", "we achieve", or just state the result | "we realize", "is realized" |
+| 实现了 | "we demonstrated", "the device achieved", or just state the result in the past tense | "we realize", "is realized", "we demonstrate" |
 | 具有重要意义 | say what it enables, with a number | "is of great significance" |

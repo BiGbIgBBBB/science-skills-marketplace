@@ -14,8 +14,8 @@
     }
   },
   "photonics-oct": {
-    "version": "1.20261121.2149",
-    "hash": "91ebbb8492e783ebf9e857579b42bc93e25660ec47f807f0971c1d8bdbd34b4a",
+    "version": "1.20261123.2221",
+    "hash": "317345187a48a79dc8dbf021ccad72e78e5043ce2154debdad16519d327e1274",
     "skills": [
       "photonics-figure",
       "photonics-writing"

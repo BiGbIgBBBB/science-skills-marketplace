@@ -25,8 +25,9 @@ two, consequence in one. Nature and Science family, 125–200 words, no referenc
 sentences of context a physicist outside the subfield can follow, the gap, "Here we ...", the
 main results with numbers, and the wider implication.
 
-Put the headline numbers in the abstract with units and the key condition ("a 3-dB
-electro-optic bandwidth above 67 GHz at 1310 nm"), and make them match the text exactly.
+Put the headline numbers in the abstract with units and the key condition, in the past tense
+("The modulator achieved a 3-dB electro-optic bandwidth above 67 GHz at 1310 nm"), and make
+them match the text exactly.
 
 ## Introduction
 
@@ -37,10 +38,11 @@ Three to five paragraphs, narrowing:
 2. The current solutions and the limit they hit. Group prior work by approach, not by paper.
 3. Why this platform or idea can get past that limit (for TFLN: strong Pockels effect, low
    loss, wafer-scale fabrication), and what stood in the way until now.
-4. "Here we demonstrate ..." — the device or system, the key numbers, and the validation
-   (imaging of what, compared against what).
+4. "Here we report ..." — the device or system, then the key numbers and the validation in the
+   past tense: what was imaged, what it was compared against, and what came out ("The modulator
+   achieved ...", "Imaging of ... showed ...").
 
-Do not review the whole field; cite reviews for that. Do not end with a section-by-section
+Do not review the whole field. Cite reviews for that. Do not end with a section-by-section
 outline in a letter or a Nature-family paper.
 
 ## Results (or the numbered sections of an Optica article)
@@ -57,8 +59,9 @@ A typical order for a chip-based OCT paper, one figure per step:
 | Table | Comparison with prior chip-based and benchtop systems, same metric definitions | Where this stands |
 
 Each subsection: one sentence on what is being tested and why, the measurement in enough detail
-to interpret the result, the result with numbers, and what it means for the next step. Lead
-with the finding, not with "Figure 3 shows".
+to interpret the result, the result with numbers, and what it means for the next step. The
+measurement and the result are in the past tense, and the interpretation may be in the present
+(`references/house-style.md`). Lead with the finding, not with "Figure 3 shows".
 
 For a device-only paper, drop rows 4–5 and add a system-level demonstration that shows the
 device doing something (data transmission, a sweep, a spectrum).
@@ -73,13 +76,13 @@ device doing something (data transmission, a sweep, a spectrum).
 - For OCT: what would be needed for in vivo or clinical use that this work has not shown
   (power on the sample, safety limits, speed, packaging).
 
-The conclusion of an Optica article restates the result and its implication in a short
-paragraph. Do not introduce new data there.
+The conclusion of an Optica article restates the result, in the past tense, and its
+implication in a short paragraph. Do not introduce new data there.
 
 ## Methods
 
-Enough for a group with a similar cleanroom and lab to reproduce the work; the reporting
-checklist lists the items. Fabrication, device characterization, system setup, signal
+Enough for a group with a similar cleanroom and lab to reproduce the work, written in the past
+tense apart from design facts and definitions. The reporting checklist lists the items. Fabrication, device characterization, system setup, signal
 processing (k-linearization, dispersion compensation, windowing, averaging), imaging protocol
 and sample handling each get a paragraph.
 
@@ -94,16 +97,18 @@ cited from the main text.
 - Optica: "Fig. 1. Title sentence. (a) What panel a shows. (b) ..." The title is a statement of
   content. Panels are referred to as (a), (b).
 - Nature family: "Fig. 1 | Title." then "**a**, description. **b**, description." Define every
-  symbol, scale bar, colour scale and error bar in the legend; say what n is.
+  symbol, scale bar, colour scale and error bar in the legend, and say what n is.
 - Science family: a short bold title sentence, then "(**A**) description. (**B**) ..."
 
 A caption states what is plotted and under what conditions (wavelength, power, polarization,
 averaging, dynamic range of an OCT image, scale-bar length). Interpretation belongs in the
 text. Inset, abbreviation and colour meanings are spelled out even if the text repeats them.
+Separate panel descriptions with periods, never semicolons.
 
 ## Cover letter
 
-Three short paragraphs: what was done and the headline result; why it matters to this journal's
-readers and what is new relative to the two or three closest papers, cited; any related
+Three short paragraphs. The first says what was done and the headline result, in the past tense.
+The second says why it matters to this journal's readers and what is new relative to the two or
+three closest papers, cited. The third covers any related
 submissions, suggested or excluded reviewers, and confirmation that the work is not under
 consideration elsewhere. Optica asks for about 250 words.

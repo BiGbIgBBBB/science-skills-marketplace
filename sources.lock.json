@@ -6,7 +6,7 @@
     },
     "nature": {
       "repo": "https://github.com/Yuan1z0825/nature-skills.git",
-      "commit": "c6701dbea29afa7c596d029b957b7edc92130ea5"
+      "commit": "c300047218d1015f3edeeea33a72cd298a7e9de5"
     },
     "humanizer": {
       "repo": "https://github.com/AIScientists-Dev/academic-humanizer.git",
@@ -81,6 +81,6 @@
   "academic-research-skills": {
     "external": true,
     "repo": "Imbad0202/academic-research-skills",
-    "commit": "df5b4ca2f16fbda18cdecc5927fca384f2b6c002"
+    "commit": "3eb9f07b8d0a95937b1205caa79c1e1ac207fbbd"
   }
 }
